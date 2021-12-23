@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>正在查看员工界面</title>
+		<link rel="stylesheet" type="text/css" href="/bootstrap4/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/index.css"/>
+		<script src="/script/jquery-3.4.1.min.js"></script>
+		<script src="/bootstrap4/dist/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row text-center divc mt-5">
+				<div class="col-12 p-3">
+					<p class="d-flex justify-content-between"><span>欢迎员工：<%=result[0].uname%>，登录系统</span><span><a href="/loginout">退出登录</a></span></p>
+				</div>
+				<div class="col-lg-3 col-sm-12 p-5">
+					<%if(numbers==1){%>
+							<p><a href="/index">查询个人资料</a></p>
+							<p><a href="/checkpwd">更改登录密码</a></p>
+							<p><a href="/paylist">查询本月工资条</a></p>
+					<%}else if(numbers==2){%>
+							<p><a href="/index">查询个人资料</a></p>
+							<p><a href="/checkpwd">更改登录密码</a></p>
+							<p><a href="/paylist">查询本月工资条</a></p>
+							<p><a href="/hr_select">查询所有员工基本信息</a></p>
+							<p><a href="/hr_add">录入新员工基本信息</a></p>
+					<%}else{%>
+							<p><a href="/index">查询个人资料</a></p>
+							<p><a href="/checkpwd">更改登录密码</a></p>
+							<p><a href="/paylist">查询本月工资条</a></p>
+							<p><a href="/acc_paylist">查询所有员工薪资</a></p>
+							<p><a href="/acc_payadd">录入本月员工薪资</a></p>
+							<p><a href="/acc_rank">薪资制度</a></p>
+						<%}%>
+				</div>
+				<div class="col-lg-9 col-sm-12 p-2">
+					<div class="text-center bg-transparent">
+						<h4>个人资料</h4>
+					</div>
+					  <table class="table table-hover table-striped">
+						<tbody>
+						  <tr>
+							<td>姓名：<%=result[0].uname%></td>
+							<td>性别：<%if(result[0].gender==0){%><span>女</span><%}else{%><span>男</span><%}%></td>
+							<td>出生日期：<%=result[0].birthday%></td>
+							<td>年龄：<%=result[0].age%></td>
+							
+						  </tr>
+						  <tr>
+							<td>学历：<%=result[0].education%></td>
+							<td>婚否：<%if(result[0].isMarry==0){%><span>未婚</span><%}else{%><span>已婚</span><%}%></td>
+							<td>入职时间：<%=result[0].entryTime%></td>
+							<td>在职状态：<%if(result[0].status==0){%><span>离职</span><%}else{%><span>在职</span><%}%></td>
+						  </tr>
+						  <tr>
+							<td colspan="2">身份证号码：<%=result[0].personNum%></td>
+							<td colspan="2">现居住地：<%=result[0].address%></td>
+						  </tr>
+						</tbody>
+					  </table>
+				</div>
+			</div>
+
+		</div>
+	</body>
+</html>

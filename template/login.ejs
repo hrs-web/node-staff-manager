@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>欢迎进入员工管理系统</title>
+		<link rel="stylesheet" href="/bootstrap4/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/login.css"/>
+	</head>
+	<body>
+		<div class="d-flex justify-content-center login-wrapper">
+			<div class="col-sm-8 col-md-6 col-xl-4 p-4 card align-self-center login">
+				<div class="card-header text-center bg-transparent">
+					<div><%if(msg!=null){%><div class="alert alert-danger"><%=msg%></div><%}else{%><span></span><%}%></div>
+					<h4 class="mb-0">员工管理系统</h4>
+				</div>
+				<div class="card-body">
+					<form method="post" action="/" enctype="application/x-www-form-urlencoded">
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="customRadioInline1" name="number" class="custom-control-input" value="1" checked>
+							<label class="custom-control-label" for="customRadioInline1">普通员工</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="customRadioInline2" name="number" class="custom-control-input" value="2">
+							<label class="custom-control-label" for="customRadioInline2">行政主管</label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="customRadioInline3" name="number" class="custom-control-input" value="3">
+							<label class="custom-control-label" for="customRadioInline3">财务总监</label>
+						</div>
+						<p></p>
+						<div class="form-group text-left">
+							<input type="text" class="form-control required" placeholder="用户名" autocomplete="off" name="username" autofocus="autofocus" maxlength="32">
+						</div>
+						<div class="form-group text-left">
+							<input type="password" class="form-control required" name="password" placeholder="密码" maxlength="32">
+						</div>
+						<div class="form-group form-check text-left">
+							<input type="checkbox" class="form-check-input" id="" name="" checked="checked" value="true"> <label class="form-check-label" for="remember-me">记住我</label>
+						</div>
+						<div class="">
+							<button type="submit" class="btn btn-mybg btn-block" >登&nbsp;&nbsp;录</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

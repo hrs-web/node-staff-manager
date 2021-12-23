@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>欢迎进入员工管理系统</title>
+    <link rel="stylesheet" href="/bootstrap4/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/checkpwd.css" />
+</head>
+<body>
+<form class="container" method="post" action="/checkpwd" enctype="application/x-www-form-urlencoded">
+    <div class="container">
+        <div class="row text-center divc mt-5">
+            <div class="col-12 p-3">
+                <p class="d-flex justify-content-between"><span>欢迎员工：<%=uname%>，登录系统</span><span><a href="/loginout">退出登录</a></span></p>
+            </div>
+            <div class="col-lg-3 col-sm-12 p-5">
+                <%if(numbers==1){%>
+                        <p><a href="/index">查询个人资料</a></p>
+                        <p><a href="/checkpwd">更改登录密码</a></p>
+                        <p><a href="/paylist">查询本月工资条</a></p>
+                <%}else if(numbers==2){%>
+                        <p><a href="/index">查询个人资料</a></p>
+                        <p><a href="/checkpwd">更改登录密码</a></p>
+                        <p><a href="/paylist">查询本月工资条</a></p>
+                        <p><a href="/hr_select">查询所有员工基本信息</a></p>
+                        <p><a href="/hr_add">录入新员工基本信息</a></p>
+                <%}else{%>
+                        <p><a href="/index">查询个人资料</a></p>
+                        <p><a href="/checkpwd">更改登录密码</a></p>
+                        <p><a href="/paylist">查询本月工资条</a></p>
+                        <p><a href="/acc_paylist">查询所有员工薪资</a></p>
+                        <p><a href="/acc_payadd">录入本月员工薪资</a></p>
+                        <p><a href="/acc_rank">薪资制度</a></p>
+                    <%}%>
+            </div>
+                    <div class="card-body">
+                        <div class="text-center bg-transparent">
+                            <h4>修改密码</h4>
+                        </div>
+                        <div><%if(msg!=null){%><div class="alert alert-danger"><%=msg%></div><%}else{%><span></span><%}%></div>
+                        <form method="post" action="/checkpwd" enctype="application/x-www-form-urlencoded">
+                            <div class="form-group text-left">
+                                <input type="password" class="form-control required" placeholder="请输入原密码" autocomplete="off" name="oldpwd" autofocus="autofocus" maxlength="32">
+                            </div>
+                            <div class="form-group text-left">
+                                <input type="password" class="form-control required" name="newpwd" placeholder="请输入新密码" maxlength="32">
+                            </div>
+                            <div class="form-group text-left">
+                                <input type="password" class="form-control required" name="checkpwd" placeholder="请再次输入新密码" maxlength="32">
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-mybg btn-block" >登&nbsp;&nbsp;录</button>
+                            </div>
+                            <p style="visibility:hidden;">登录模板</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+</form>
+</body>
+</html>

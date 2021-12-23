@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>正在查看员工界面</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap4/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/hr_select.css"/>
+</head>
+<body>
+    <div class="container-fluid">
+    <!-- <div class="row text-center divc mt-5"> -->
+        <div class="row p-0 mb-0 mx-0 text-center divc mt-5">
+<!-- <div class="container-fluid p-0 m-0">
+    <div class="row p-0 mb-0 mx-0 text-center divc"> -->
+        <div class="col-12 p-3">
+            <p class="d-flex justify-content-between"><span>正在查看所有员工信息</span><span><a href="/loginout">退出登录</a></span></p>
+        </div>
+        <div class="col-lg-2 col-sm-12 p-lg-5">
+            <p><a href="/index">查询个人资料</a></p>
+            <p><a href="/checkpwd">更改登录密码</a></p>
+            <p><a href="/paylist">查询本月工资条</a></p>
+            <p><a href="/hr_select">查询所有员工基本信息</a></p>
+            <p><a href="/hr_add">录入新员工基本信息</a></p>
+        </div>
+        <div class="col-lg-10 col-sm-12 p-2">
+            <div class="text-center bg-transparent">
+                <h4>所有员工基本信息</h4>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead  class="thead-dark">
+                  <tr>
+                    <th scope="col">姓名</th>
+                    <th scope="col">性别</th>
+                    <th scope="col">年龄</th>
+                    <th scope="col">婚否</th>
+                    <th scope="col">现居住地</th>
+                    <th scope="col">身份证号码</th>
+                    <th scope="col">学历</th>
+                    <th scope="col">岗位</th>
+                    <th scope="col">底薪</th>
+                    <th scope="col">津贴</th>
+                    <th scope="col">提成</th>
+                    <th scope="col">绩效</th>
+                    <th scope="col">入职时间</th>
+                    <th scope="col">在职状态</th>
+                    <th scope="col">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <%result.forEach((item,index)=>{%>
+                        <%if(item.status==0){%>
+                        <tr hidden>
+                            <td scope="row"><%=item.uname%></td>
+                            <%if(item.gender==0){%>
+                                <td>女</td>
+                            <%}else{%>
+                                <td>男</td>
+                            <%}%>
+                            <td><%=item.age%></td>
+                            <%if(item.isMarry==0){%>
+                                <td>未婚</td>
+                            <%}else{%>
+                                <td>已婚</td>
+                            <%}%>
+                            <td><%=item.address%></td>
+                            <td><%=item.personNum%></td>
+                            <td><%=item.education%></td>
+                            <td><%=item.sta_name%></td>
+                            <td><%=item.edu_money%></td>
+                            <td><%=item.sta_money%></td>
+                            <td><%=item.perfor%></td>
+                            <td><%=item.kbi%></td>
+                            <td><%=item.entryTime%></td>
+                            <%if(item.status==0){%>
+                                <td>离职</td>
+                            <%}else{%>
+                                <td>在职</td>
+                            <%}%>
+                            <td>@mdo</td>
+                        </tr>
+                        <%}else{%>
+                            <tr>
+                                <td scope="row"><%=item.uname%></td>
+                                <%if(item.gender==0){%>
+                                    <td>女</td>
+                                <%}else{%>
+                                    <td>男</td>
+                                <%}%>
+                                <td><%=item.age%></td>
+                                <%if(item.isMarry==0){%>
+                                    <td>未婚</td>
+                                <%}else{%>
+                                    <td>已婚</td>
+                                <%}%>
+                                <td><%=item.address%></td>
+                                <td><%=item.personNum%></td>
+                                <td><%=item.education%></td>
+                                <td><%=item.sta_name%></td>
+                                <td><%=item.edu_money%></td>
+                                <td><%=item.sta_money%></td>
+                                <td><%=item.perfor%></td>
+                                <td><%=item.kbi%></td>
+                                <td><%=item.entryTime%></td>
+                                <%if(item.status==0){%>
+                                    <td>离职</td>
+                                <%}else{%>
+                                    <td>在职</td>
+                                <%}%>
+                                <td><a href="/hr_upd?id=<%=item.id%>"><button type="button" class="btn btn-primary btn-sm">编辑</button></a>
+                                    <button type="button" onclick="dels(<%=item.id%>)" class="btn btn-danger btn-sm">删除</button></td>
+                            </tr>
+                        <%}%>
+                    <%})%>
+                </tbody>
+            </table>
+      </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/script/jquery-3.4.1.min.js"></script>
+<script>
+    // 声明一个触发删除的点击事件函数dels，传递参数：当前点击删除的学生学号
+    function dels(val) {
+        $.post({
+            url:'/hr_select/del?id='+val,
+            dataType:'json',
+            success:function (test) {
+                if(test.code==1){
+                    alert('删除成功');
+                    window.location.href='/hr_select';
+                }else{
+                    alert('删除失败')
+                }
+            }
+        })
+    }
+</script>
+</html>

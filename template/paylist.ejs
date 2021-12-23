@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>正在查看员工界面</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap4/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/paylist.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row text-center divc mt-5">
+        <div class="col-12 p-3">
+            <p class="d-flex justify-content-between"><span>欢迎员工：<%=result[0].uname%>，登录系统</span><span><a href="/loginout">退出登录</a></span></p>
+        </div>
+        <div class="col-lg-3 col-sm-12 p-5">
+            <%if(numbers==1){%>
+                <p><a href="/index">查询个人资料</a></p>
+                <p><a href="/checkpwd">更改登录密码</a></p>
+                <p><a href="/paylist">查询本月工资条</a></p>
+            <%}else if(numbers==2){%>
+                <p><a href="/index">查询个人资料</a></p>
+                <p><a href="/checkpwd">更改登录密码</a></p>
+                <p><a href="/paylist">查询本月工资条</a></p>
+                <p><a href="/hr_select">查询所有员工基本信息</a></p>
+                <p><a href="/hr_add">录入新员工基本信息</a></p>
+            <%}else{%>
+                <p><a href="/index">查询个人资料</a></p>
+                <p><a href="/checkpwd">更改登录密码</a></p>
+                <p><a href="/paylist">查询本月工资条</a></p>
+                <p><a href="/acc_paylist">查询所有员工薪资</a></p>
+                <p><a href="/acc_payadd">录入本月员工薪资</a></p>
+                <p><a href="/acc_rank">薪资制度</a></p>
+            <%}%>
+        </div>
+        <div class="col-lg-9 col-sm-12 p-5">
+            <div class="text-center bg-transparent">
+                <h4>本月工资条</h4>
+            </div>
+            <table cellspacing="0" cellpadding="6" class="table-bordered">
+                <tr class="bg-warning">
+                    <th>姓名</th>
+                    <th>岗位</th>
+                    <th>月份</th>
+                    <th>底薪</th>
+                    <th>岗位津贴</th>
+                    <th>KBI绩效</th>
+                    <th>提成</th>
+                    <th>扣除五险一金</th>
+                    <th>实发工资</th>
+                    <th>操作</th>
+                </tr>
+                <tr>
+                    <td><%=result[0].uname%></td>
+                    <td><%=result[0].sta_name%></td>
+                    <td><%=result[0].year%>-<%=result[0].month%></td>
+                    <td><%=result[0].edu_money%></td>
+                    <td><%=result[0].sta_money%></td>
+                    <td><%=result[0].kbi%></td>
+                    <td><%=result[0].perfor%></td>
+                    <td>350</td>
+                    <td><%=result[0].zong%></td>
+                    <%if(result[0].status==0){%>
+                    <form action="/paylist?id=<%=result[0].id%>" method="post" enctype="application/x-www-form-urlencoded">
+                        <td><input type="submit" name="" id="" value="确定" class="btn btn-primary"/></td>
+                    </form>
+                    <%}else{%>
+                        <td>已确定</td>
+                    <%}%>
+
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

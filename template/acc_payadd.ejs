@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>正在查看员工界面</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap4/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/acc_payadd.css" />
+</head>
+<body>
+<div class="container">
+    <form enctype="application/x-www-form-urlencoded" action="/acc_payadd" method="post" class="row text-center divc mt-5">
+        <div class="col-12 p-3">
+            <p class="d-flex justify-content-between"><span>正在添加员工薪资</span><span><a href="/loginout">退出登录</a></span></p>
+        </div>
+        <div class="col-lg-3 col-sm-12 p-lg-5">
+            <p><a href="/index">查询个人资料</a></p>
+            <p><a href="/checkpwd">更改登录密码</a></p>
+            <p><a href="/paylist">查询本月工资条</a></p>
+            <p><a href="/acc_paylist">查询所有员工薪资</a></p>
+            <p><a href="/acc_payadd">录入本月员工薪资</a></p>
+            <p><a href="/acc_rank">薪资制度</a></p>
+        </div>
+        <div class="col-lg-9 col-sm-12 p-lg-5">
+            <%if(result.length==0){%>
+                <div class="text-center bg-transparent">
+                    <h4>暂无需要录入员工薪资</h4>
+                </div>
+            <%}else{%>
+            <div class="text-center bg-transparent">
+                <h4>录入员工薪资</h4>
+            </div>
+            <table  class="table table-striped table-hover" >
+                <thead  class="thead-dark">
+                    <tr>
+                        <th hidden>员工id</th>
+                        <th scope="col">姓名</th>
+                        <th scope="col">底薪</th>
+                        <th scope="col">岗位津贴</th>
+                        <th scope="col">kbi绩效</th>
+                        <th scope="col">提成</th>
+                        <th scope="col">扣除五险一金</th>
+                        <th scope="col">实发工资</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%result.forEach((item,index)=>{%>
+                    <tr>
+                        <td hidden><input type="number" name="id" min="0" readonly value="<%=item.id%>"></td>
+                        <td><%=item.uname%></td>
+                        <td><%=item.edu_money%></td>
+                        <td><%=item.sta_money%></td>
+                        <td><input type="number" min="0" name="kbi" class="form-control" value="<%=item.kbi%>" style="width: 120px;"></td>
+                        <td><input type="number" min="0" name="perfor" class="form-control" value="<%=item.perfor%>" style="width: 120px;"></td>
+                        <td>350</td>
+                        <td><%=item.zong%></td>
+                    </tr>
+                    <%})%>
+                    <tr><td colspan="7"><input type="submit" value="录入" name="" class="btn btn-primary"></td></tr>
+                </tbody>
+            </table>
+            <%}%>
+        </div>
+    </form>
+</div>
+</body>
+</html>

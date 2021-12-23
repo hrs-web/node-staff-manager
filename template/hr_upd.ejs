@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正在查看员工界面</title>
+    <link rel="stylesheet" type="text/css" href="/bootstrap4/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/hr_upd.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="row text-center divc mt-5">
+        <div class="col-12 p-3">
+            <p class="d-flex justify-content-between"><span>正在修改员工<%=result[0].uname%>信息</span><span><a href="/loginout">退出登录</a></span></p>
+        </div>
+        <div class="col-lg-3 col-sm-12 p-lg-5">
+            <p><a href="/index" class="a">查询个人资料</a></p>
+            <p><a href="/checkpwd" class="a">更改登录密码</a></p>
+            <p><a href="/paylist" class="a">查询本月工资条</a></p>
+            <p><a href="/hr_select" class="a">查询所有员工基本信息</a></p>
+            <p><a href="/hr_add" class="a">录入新员工基本信息</a></p>
+        </div>
+        <div class="col-lg-9 col-sm-12 p-lg-5">
+
+            <div class="text-center bg-transparent">
+                <h4>修改员工基本信息</h4>
+            </div>
+            <br>
+            <form action="/hr_upd" method="post" enctype="application/x-www-form-urlencoded">
+                <input type="hidden" name="id" value="<%=result[0].id%>">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">员工姓名：</label>
+                    <div class="col-sm-4">
+                      <input type="text"  name="uname" value="<%=result[0].uname%>" placeholder="请输入员工姓名" class="form-control" required>
+                    </div>
+                    <label class="col-sm-2 col-form-label" for="">性&emsp;&emsp;别：</label>
+                    <div class="col-sm-4">
+                    <select class="custom-select mr-sm-2" name="gender" id="">
+                        <option value="1" <%if(result[0].gender==1){%>selected<%}%>>男</option>
+                        <option value="0" <%if(result[0].gender==0){%>selected<%}%>>女</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">年&emsp;&emsp;龄：</label>
+                    <div class="col-sm-4">
+                      <input type="number"  name="age" value="<%=result[0].age%>" placeholder="请输入员工年龄" class="form-control" required>
+                    </div>
+                    <label class="col-sm-2 col-form-label">身份证号：</label>
+                    <div class="col-sm-4">
+                      <input type="text"  name="personNum" value="<%=result[0].personNum%>" maxlength="18" placeholder="请输入身份证号" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="">学&emsp;&emsp;历：</label>
+                    <div class="col-sm-4">
+                    <select class="custom-select mr-sm-2" name="edu_id" id="" required> 
+                        <option value="1" <%if(result[0].edu_id==1){%>selected<%}%>>高中</option>
+                        <option value="2" <%if(result[0].edu_id==2){%>selected<%}%>>大专</option>
+                        <option value="3" <%if(result[0].edu_id==3){%>selected<%}%>>本科</option>
+                        <option value="4" <%if(result[0].edu_id==4){%>selected<%}%>>硕士</option>
+                        <option value="5" <%if(result[0].edu_id==5){%>selected<%}%>>博士</option>
+                    </select>
+                    </div>
+                    <label class="col-sm-2 col-form-label" for="">是否婚配：</label>
+                    <div class="col-sm-4">
+                    <select class="custom-select mr-sm-2" name="isMarry" id="" required>
+                        <option value="0" <%if(result[0].isMarry==0){%>selected<%}%>>否</option>
+                        <option value="1" <%if(result[0].isMarry==1){%>selected<%}%>>是</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">入职时间：</label>
+                    <div class="col-sm-4">
+                      <input type="date" name="entryTime" value="<%=result[0].entryTime%>" class="form-control">
+                    </div>
+                    <label class="col-sm-2 col-form-label" for="">在职状态：</label>
+                    <div class="col-sm-4">
+                    <select class="custom-select mr-sm-2" name="status" id="">
+                        <option value="1" <%if(result[0].status==0){%>selected<%}%>>在职</option>
+                        <option value="0" <%if(result[0].status==0){%>selected<%}%>>离职</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">现住居住地：</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="address" value="<%=result[0].address%>" id="" placeholder="请输入居住地址" class="form-control"></input>
+                    </div>
+                </div>
+                <input type="submit" value="修改" class="btn btn-success mt-3"/>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

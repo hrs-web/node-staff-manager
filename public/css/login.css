@@ -1,0 +1,30 @@
+ body{
+	background:url(../img/2046046.jpg) no-repeat; 
+}
+
+.login-wrapper {
+	width: 100vw;
+	height: 100vh;
+	color: #fff;
+}
+
+.login {
+	background: rgba(0,206,209, 0.6);
+}
+
+.slide-img {
+	display: block;
+	width: 100vw;
+	height: 100vh;
+}
+.btn-mybg {
+	color: #fff;
+	background-color: #66CDAA;
+	border: none;
+}
+
+.btn-mybg:hover {
+		color: #fff;
+		background-color: #218838;
+		border-color: #1e7e34;
+}
